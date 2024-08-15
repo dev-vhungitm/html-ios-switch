@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ITM - Switch</title>
+
+		<!-- Import Font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Internal Style -->
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Roboto', sans-serif;
+			}
+
+			.switch {
+				--switch-gap: 8px;
+				--switch-transition: all 0.2s ease;
+
+				/* Button Variables */
+				--switch-button-bg-color: #e4e4e4;
+				--switch-button-bg-active-color: #6bd55c;
+				--switch-button-width: 57px;
+				--switch-button-height: 36px;
+				--switch-button-spacing: 3px;
+
+				/* Switch Before Variables */
+				--switch-button-before-color: white;
+				--switch-button-before-shadow: #0000003d 0px 2px 4px;
+				--switch-button-before-size: calc(var(--switch-button-height) - var(--switch-button-spacing) * 2);
+				--switch-button-before-top: var(--switch-button-spacing);
+				--switch-button-before-left: var(--switch-button-spacing);
+				--switch-button-before-active-left: calc(
+					100% - var(--switch-button-spacing) - var(--switch-button-before-size)
+				);
+
+				/* Label Variables*/
+				--switch-label-color: red;
+				--switch-label-active-color: #6bd55c;
+				--switch-label-default-content: 'OFF';
+				--switch-label-default-active-content: 'ON';
+
+				display: flex;
+				align-items: center;
+				gap: var(--switch-gap);
+			}
+
+			.switch .switch-button {
+				position: relative;
+				width: var(--switch-button-width);
+				height: var(--switch-button-height);
+				border-radius: var(--switch-button-height);
+
+				background: var(--switch-button-bg-color);
+				transition: var(--switch-transition);
+			}
+
+			.switch .switch-button input {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 2;
+
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				cursor: pointer;
+			}
+
+			.switch .switch-button::before {
+				position: absolute;
+				top: var(--switch-button-before-top);
+				left: var(--switch-button-before-left);
+				z-index: 1;
+
+				aspect-ratio: 1 / 1;
+				width: var(--switch-button-before-size);
+				height: auto;
+				border-radius: 100%;
+
+				background: white;
+				box-shadow: var(--switch-button-before-shadow);
+				content: '';
+				transition: var(--switch-transition);
+			}
+
+			.switch label::before {
+				color: var(--switch-label-color);
+				cursor: pointer;
+				content: var(--switch-label-default-content);
+				transition: var(--switch-transition);
+			}
+
+			/* Is Active */
+			.switch .switch-button:has(input:checked) {
+				background: var(--switch-button-bg-active-color);
+			}
+
+			.switch .switch-button:has(input:checked)::before {
+				left: var(--switch-button-before-active-left);
+			}
+
+			.switch .switch-button:has(input:checked) ~ label::before {
+				color: var(--switch-label-active-color);
+				content: var(--switch-label-default-active-content);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="switch">
+			<div class="switch-button">
+				<input type="checkbox" id="switch" />
+			</div>
+			<label for="switch"></label>
+		</div>
+	</body>
+</html>
