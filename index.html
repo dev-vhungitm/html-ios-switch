@@ -20,21 +20,30 @@
 			}
 
 			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				height: 100vh;
+				padding: 0;
 				font-family: 'Roboto', sans-serif;
+				overflow: hidden;
 			}
 
+			/* Switch */
 			.switch {
+				/* Switch Variables */
 				--switch-gap: 8px;
 				--switch-transition: all 0.2s ease;
 
-				/* Button Variables */
+				/* Switch Button Variables */
 				--switch-button-bg-color: #e4e4e4;
 				--switch-button-bg-active-color: #6bd55c;
 				--switch-button-width: 57px;
 				--switch-button-height: 36px;
 				--switch-button-spacing: 3px;
 
-				/* Switch Before Variables */
+				/* Switch Button Before Variables */
 				--switch-button-before-color: white;
 				--switch-button-before-shadow: #0000003d 0px 2px 4px;
 				--switch-button-before-size: calc(var(--switch-button-height) - var(--switch-button-spacing) * 2);
@@ -55,6 +64,7 @@
 				gap: var(--switch-gap);
 			}
 
+			/* Switch Button */
 			.switch .switch-button {
 				position: relative;
 				width: var(--switch-button-width);
@@ -77,6 +87,7 @@
 				cursor: pointer;
 			}
 
+			/* Switch Button Before */
 			.switch .switch-button::before {
 				position: absolute;
 				top: var(--switch-button-before-top);
@@ -85,7 +96,6 @@
 
 				aspect-ratio: 1 / 1;
 				width: var(--switch-button-before-size);
-				height: auto;
 				border-radius: 100%;
 
 				background: white;
@@ -94,6 +104,7 @@
 				transition: var(--switch-transition);
 			}
 
+			/* Switch Label */
 			.switch label::before {
 				color: var(--switch-label-color);
 				cursor: pointer;
